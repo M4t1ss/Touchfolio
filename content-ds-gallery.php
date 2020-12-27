@@ -144,8 +144,13 @@
 				if(!$alt_attr)
 					$alt_attr = $image_urls[$j];
 
+				$imgurl = $image_urls[$j];
+				if(strpos($imgurl, "https")===false){
+					$imgurl = str_replace("http", "https", $imgurl);
+				}
+
 				$album_data .= "\t\t<li class=\"two-dim-item\"{$video_data}{$img_scale} data-img-desc=\"{$desc}\" data-img-width=\"{$image_widths[$j]}\" data-img-height=\"{$image_heights[$j]}\">";
-				$album_data .= "<a href=\"{$image_urls[$j]}\">{$alt_attr}</a>";
+				$album_data .= "<a href=\"{$imgurl}\">{$alt_attr}</a>";
 
 				$album_data .=  "</li>\n";
 				$j++;
